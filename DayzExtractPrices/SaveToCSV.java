@@ -10,12 +10,9 @@ public class SaveToCSV {
     {
         File file = new File(pathToCSV + fileName);
         try {
-            FileWriter outputCSV = new FileWriter(file);
+            FileWriter outputCSV = new FileWriter(file, true);
 
             CSVWriter writer = new CSVWriter(outputCSV);
-
-            String [] header = "Name;Buy Price;Sell Price".split(";");
-            writer.writeNext(header);
 
             ArrayList<String[]> data = new ArrayList<>();
             for (Record elem : recordsList) {
@@ -26,6 +23,21 @@ public class SaveToCSV {
             writer.close();
         }
         catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+    public static void addHeader(String pathToCSV, String fileName) {
+        File file = new File(pathToCSV + fileName);
+        try {
+            FileWriter outputCSV = new FileWriter(file);
+
+            CSVWriter writer = new CSVWriter(outputCSV);
+
+            String[] header = "Name;Buy Price;Sell Price".split(";");
+            writer.writeNext(header);
+
+            writer.close();
+        } catch (IOException e) {
             System.out.println(e);
         }
     }
