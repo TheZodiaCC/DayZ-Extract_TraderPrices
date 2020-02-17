@@ -37,10 +37,28 @@ public class Main {
                     buyPricesTab = ExtractText.fetchBuyPrices();
                     sellPricesTab = ExtractText.fetchSellPrices();
 
+
+                    //Remove Duplicates
+                    //for (int i=0; i<namesTab.size()-1; i++) {
+                    //    if (namesTab.get(i).equals(namesTab.get(i+1)))
+                    //    {
+                    //        namesTab.remove(i);
+                    //        buyPricesTab.remove(i);
+                    //        sellPricesTab.remove(i);
+                    //    }
+                    //}
+                    //
+
                     for (String elem : namesTab) {
-                        //System.out.println(elem);
-                        Rec.add(new Record(elem, buyPricesTab.get(k), sellPricesTab.get(k)));
-                        k++;
+                        try {
+                            System.out.println(elem + " " + buyPricesTab.get(k) + " " + sellPricesTab.get(k) + " " + k);
+                            Rec.add(new Record(elem, buyPricesTab.get(k), sellPricesTab.get(k)));
+                            k++;
+                        }
+                        catch (IndexOutOfBoundsException e)
+                        {
+                            continue;
+                        }
                     }
                     for (Record elem : Rec) {
                         System.out.println("Name: " + elem.getName() + " Buy: " + elem.getBuyPrice() + " Sell: " + elem.getSellPrice());

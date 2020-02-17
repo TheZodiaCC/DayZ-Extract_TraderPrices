@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 import net.sourceforge.tess4j.TesseractException;
 
@@ -17,6 +18,8 @@ public class ExtractText {
     private static Image image;
     private static BufferedImage crop;
     private static Tesseract tesseract = new Tesseract();
+    private static HashMap<String, HashMap<String,String>> set = new HashMap<>();
+    private static int k = 0;
 
     public static void setImage(String pathToImage) {
         try {
@@ -43,7 +46,7 @@ public class ExtractText {
                 Color newColor = new Color(red+green+blue,
                         red+green+blue,red+green+blue);
 
-                crop.setRGB(j,i,newColor.getRGB());
+                crop.setRGB(j, i, newColor.getRGB());
             }
         }
     }
@@ -69,7 +72,7 @@ public class ExtractText {
         String buyPrices = tesseract.doOCR(((BufferedImage) image).getSubimage(860, 0, 150, crop.getHeight()));
 
         ArrayList<String> buyPricesTab = new ArrayList<String>(Arrays.asList(buyPrices.split("\n")));
-        buyPricesTab.removeAll(Arrays.asList(" ", null));
+        //buyPricesTab.removeAll(Arrays.asList(" ", null));
 
         for (int i=0; i<buyPricesTab.size(); i++)
         {
@@ -98,5 +101,4 @@ public class ExtractText {
 
         return sellPricesTab;
     }
-
 }
