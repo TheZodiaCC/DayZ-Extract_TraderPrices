@@ -1,7 +1,7 @@
 # DayZ-Extract_TraderPrices
 # Extract Trader Prices using Tesseract OCR
 
-#**Updated Version That Can Handle Multiple Input Files**
+# **Updated Version That Can Handle Multiple Input Files**
 
 ## Installation
 - download opencsv and tess4j and include them to project
