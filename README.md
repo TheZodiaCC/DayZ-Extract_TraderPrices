@@ -5,7 +5,7 @@
 
 ## Installation
 - download opencsv and tess4j and include them to project
-- change path for pathToCSV, fileName, ExtractText.setImage, ExtractText.setDataSet to match path for your files
+- change path for pathToCSV, fileName, dirPath, ExtractText.setDataSet to match path for your files
 - run "javac Main.java" to compile project
 - run "java Main.java" to run script
 
